@@ -101,7 +101,7 @@ export const layer = Layer.effect(
         const readonlyExternalDirectory = {
           "*": "ask",
           ...Object.fromEntries(whitelistedDirs.map((dir) => [dir, "allow"])),
-        } satisfies Record<string, "allow" | "ask" | "deny">
+        } satisfies Record<string, "allow" | "ask" | "deny" | "deny!">
 
         const defaults = Permission.fromConfig({
           "*": "allow",

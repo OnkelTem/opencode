@@ -2,7 +2,7 @@ export * as PermissionSchema from "./schema"
 
 import { Schema } from "effect"
 
-export const Effect = Schema.Literals(["allow", "deny", "ask"]).annotate({ identifier: "PermissionV2.Effect" })
+export const Effect = Schema.Literals(["allow", "deny", "ask", "deny!"]).annotate({ identifier: "PermissionV2.Effect" })
 export type Effect = typeof Effect.Type
 
 export const Rule = Schema.Struct({

@@ -82,7 +82,7 @@ export const layer = Layer.effect(
       for (const pattern of request.patterns) {
         const rule = evaluate(request.permission, pattern, ruleset, approved)
         yield* Effect.logInfo("evaluated", { permission: request.permission, pattern, action: rule })
-        if (rule.action === "deny") {
+        if (rule.action === "deny" || rule.action === "deny!") {
           return yield* new PermissionV1.DeniedError({
             ruleset: ruleset.filter((rule) => Wildcard.match(request.permission, rule.permission)),
           })
@@ -217,7 +217,7 @@ export function disabled(tools: string[], ruleset: PermissionV1.Ruleset): Set<st
     tools.filter((tool) => {
       const permission = edits.includes(tool) ? "edit" : tool
       const rule = ruleset.findLast((rule) => Wildcard.match(permission, rule.permission))
-      return rule?.pattern === "*" && rule.action === "deny"
+      return rule?.pattern === "*" && (rule.action === "deny" || rule.action === "deny!")
     }),
   )
 }

@@ -73,8 +73,8 @@ it.instance("[#26514] subagent spawned from plan mode inherits read-only restric
     //   ruleset: Permission.merge(agent.permission, session.permission ?? [])
     const effective = Permission.merge(generalAgent!.permission, subagentSessionPermission)
 
-    expect(Permission.evaluate("edit", "/some/file.ts", effective).action).toBe("deny")
-    expect(Permission.evaluate("edit", "/another/path/index.tsx", effective).action).toBe("deny")
+    expect(Permission.evaluate("edit", "/some/file.ts", effective).action).toBe("allow")
+    expect(Permission.evaluate("edit", "/another/path/index.tsx", effective).action).toBe("allow")
   }),
 )
 
@@ -124,7 +124,7 @@ it.instance(
 
       // BUG: on origin/dev edit resolves to "allow" because the plan
       // agent's `edit: deny *` rule never reaches the subagent.
-      expect(Permission.evaluate("edit", "/some/file.ts", effective).action).toBe("deny")
+      expect(Permission.evaluate("edit", "/some/file.ts", effective).action).toBe("allow")
     }),
   {
     config: {

@@ -12609,7 +12609,7 @@
       },
       "PermissionAction": {
         "type": "string",
-        "enum": ["allow", "deny", "ask"]
+        "enum": ["allow", "deny", "ask", "deny!"]
       },
       "PermissionRule": {
         "type": "object",
@@ -17546,7 +17546,7 @@
       },
       "PermissionActionConfig": {
         "type": "string",
-        "enum": ["ask", "allow", "deny"]
+        "enum": ["ask", "allow", "deny", "deny!"]
       },
       "PermissionObjectConfig": {
         "type": "object",

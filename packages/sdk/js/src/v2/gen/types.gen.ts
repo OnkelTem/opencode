@@ -156,7 +156,7 @@ export type SnapshotFileDiff = {
   status?: "added" | "deleted" | "modified"
 }
 
-export type PermissionAction = "allow" | "deny" | "ask"
+export type PermissionAction = "allow" | "deny" | "ask" | "deny!"
 
 export type PermissionRule = {
   permission: string
@@ -1698,7 +1698,7 @@ export type ReferenceConfig = {
   [key: string]: ReferenceConfigEntry
 }
 
-export type PermissionActionConfig = "ask" | "allow" | "deny"
+export type PermissionActionConfig = "ask" | "allow" | "deny" | "deny!"
 
 export type PermissionObjectConfig = {
   [key: string]: PermissionActionConfig
